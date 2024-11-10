@@ -1,0 +1,60 @@
+<%- include('./base/header.ejs')%>
+
+<style>
+    body{
+      background-color: rgb(16, 19, 18);
+    }
+    .alert{
+        background-color: blueviolet;
+    }
+    h4{
+        color: white;
+    }
+  </style>
+
+<div class="container my-3">
+    <div class="alert" >
+        <h4 class=" table text-container fw-bold">All Records</h4>
+    </div>
+</div>
+
+<div class="container">
+    <table class="table text-container">
+        <thead>
+            <tr>
+                <th>RollNo</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <% if (records && records.length > 0) { %>
+                <% for (var i = 0; i < records.length; i++) { %>
+                    <tr>
+                        <td><%= records[i].rollno %></td>
+                        <td><%= records[i].name %></td>
+                        <td><%= records[i].email %></td>
+                        <td><%= records[i].phone %></td>
+                        <td>
+                            <a href="/edit/<%= records[i]._id %>" class="btn btn-warning w-75">Edit</a>
+                        </td>
+                        <td>
+                            <form action="/delete/<%= records[i]._id %>" method="get">
+                                <input type="submit" value="Delete" class="btn btn-danger">
+                            </form>
+                        </td>
+                    </tr>
+                <% } %>
+            <% } else { %>
+                <tr><td colspan="4">No records found.</td></tr>
+            <% } %>
+            
+        </tbody>
+    </table>
+</div>
+
+<%- include('./base/footer.ejs') %>

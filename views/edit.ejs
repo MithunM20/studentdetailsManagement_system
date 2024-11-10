@@ -1,0 +1,59 @@
+<%- include('./base/header.ejs')%>
+
+<style>
+  body{
+    background-color: rgb(13, 17, 15);
+  }
+
+  .form-label{
+    color: red;
+  }
+
+  .alert{
+    background-color: blueviolet;
+  }
+
+  /* .btn{
+    background-color: blueviolet;
+  } */
+  
+</style>
+
+<div class="container">
+  <div class="alert mt-3 w-50 mx-auto" style="font-weight: bold;color: white;">
+    <h4 class="text-center fw-bold">Update Existing Data</h4>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col"></div>
+    <div class="col">
+      <form action="/update/<%= record._id %>" method="POST" class="border border-2 p-4">
+        <div class="field my-3">
+          <label for="" class="form-label fw-bold">Roll No</label>
+          <input type="number" class="form-control" name="rollno" value="<%= record.rollno %>" placeholder="enter roll no" required>
+        </div>
+
+        <div class="field my-3">
+          <label for="" class="form-label fw-bold">Name</label>
+          <input type="text" class="form-control" name="name" value="<%= record.name %>" placeholder="enter student name" required>
+        </div>
+
+        <div class="field my-3">
+          <label for="" class="form-label fw-bold">E-mail</label>
+          <input type="email" class="form-control" name="email" value="<%= record.email %>" placeholder="enter email id" required>
+        </div>
+
+        <div class="field my-3">
+          <label for="" class="form-label fw-bold">Phone</label>
+          <input type="text" class="form-control" name="phone" value="<%= record.phone %>" placeholder="enter phone no" required>
+        </div>
+
+        <input type="submit" value="Save" class="btn btn-success w-100 fw-bold">
+      </form>
+    </div>
+    <div class="col"></div>
+  </div>
+</div>
+
+<%- include ('./base/footer.ejs')%>
